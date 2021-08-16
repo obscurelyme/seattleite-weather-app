@@ -2,7 +2,8 @@
 
 ### Development: Get Started
 
-It is highly recommended to use Microsoft Edge Tools
+_**It is highly recommended to use Microsoft Edge Tools for VS Code AND\
+Debugger for Microsoft Edge**_
 
 1. Run `Start Dev Env` task in VS Code
 
