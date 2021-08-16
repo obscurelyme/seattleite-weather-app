@@ -1,0 +1,11 @@
+{
+  // Turn off default VS Code validation so that it does not conflict with stylelint
+  // @see https://marketplace.visualstudio.com/items?itemName=stylelint.vscode-stylelint
+  "css.validate": false,
+  "scss.validate": false,
+  "less.validate": false,
+  "stylelint.enable": true,
+  "stylelint.validate": ["css", "html", "less", "postcss", "sass", "scss", "styled-css"],
+  "stylelint.configFile": ".stylelintrc.json",
+  "stylelint.packageManager": "yarn"
+}

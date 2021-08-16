@@ -1,0 +1,20 @@
+.MiniForecastPeriod {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+
+  .MiniForecastPeriod-Icon {
+    :first-child {
+      clip-path: polygon(0, 0, 0%, 100%, 100%, 0);
+      -webkit-clip-path: polygon(0 0, 0% 100%, 100% 0);
+      z-index: 101;
+    }
+    img {
+      position: absolute;
+    }
+    position: relative;
+    height: 86px;
+    width: 86px;
+  }
+}

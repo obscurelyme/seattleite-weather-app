@@ -1,0 +1,14 @@
+{
+  "name": "Seattlite Weather",
+  "version": "0.0.1",
+  "manifest_version": 3,
+  "description": "A small weather widget",
+  "author": "Nico Greco",
+  "icons": {
+    "128": "icons/space-needle-128.png"
+  },
+  "action": {
+    "default_popup": "index.html"
+  },
+  "permissions": ["geolocation", "notifications", "storage"]
+}

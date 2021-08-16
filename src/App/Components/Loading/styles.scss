@@ -1,0 +1,20 @@
+@keyframes loading-animation {
+  from {
+    transform: rotateZ(0deg);
+  }
+
+  to {
+    transform: rotateZ(360deg);
+  }
+}
+
+.loading-indicator {
+  height: 50px;
+  width: 50px;
+  animation: loading-animation 3s linear 0s infinite forwards;
+}
+
+button.Button .loading-indicator {
+  height: 35px;
+  width: 35px;
+}

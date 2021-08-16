@@ -1,0 +1,18 @@
+button.Button {
+  padding: 1rem;
+  margin: 0rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 50px;
+  width: 150px;
+  overflow: hidden;
+  background-color: #97e688;
+  outline: none;
+  border: none;
+  color: #000;
+  border-radius: 5px;
+  &:hover {
+    cursor: pointer;
+  }
+}
