@@ -1,6 +1,6 @@
 button.Button {
   padding: 1rem;
-  margin: 0rem;
+  margin: 0;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -12,7 +12,20 @@ button.Button {
   border: none;
   color: #000;
   border-radius: 5px;
+
   &:hover {
     cursor: pointer;
+  }
+
+  &:focus {
+    outline: auto;
+  }
+
+  &:disabled {
+    background-color: #c3dcbe;
+
+    &:hover {
+      cursor: default;
+    }
   }
 }

@@ -1,5 +1,7 @@
 import React from 'react';
 
+import './styles.scss';
+
 export default function Footer(): React.ReactElement {
   const created = 2021;
   const currentYear = new Date().getFullYear();
@@ -12,7 +14,7 @@ export default function Footer(): React.ReactElement {
   }
 
   return (
-    <footer>
+    <footer className="Footer">
       <h6>&copy; {copyrightYears()}, Nico Greco</h6>
     </footer>
   );

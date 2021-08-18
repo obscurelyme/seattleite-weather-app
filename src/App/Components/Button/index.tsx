@@ -12,8 +12,9 @@ interface ButtonProps extends NativeButtonProps {
 
 export default function Button({ children, ...props }: React.PropsWithChildren<ButtonProps>): React.ReactElement {
   const { loading, ...nativeProps } = props;
+  const { className, ...allOtherProps } = nativeProps;
   return (
-    <button className={`Button ${props?.className ?? ''}`.trim()} {...nativeProps}>
+    <button className={`Button ${className ?? ''}`.trim()} {...allOtherProps}>
       {loading ? <LoadingIndicator /> : children}
     </button>
   );

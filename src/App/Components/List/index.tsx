@@ -11,8 +11,10 @@ export function UnorderedList({
   horizontal,
   ...nativeProps
 }: React.PropsWithChildren<ListProps>): React.ReactElement {
+  const { className, ...allOtherProps } = nativeProps;
+  const classes = `List ${horizontal ? 'Horizontal' : ''} ${className ?? ''}`.trim();
   return (
-    <ul className={`List ${horizontal ? 'Horizontal' : ''} ${nativeProps?.className ?? ''}`.trim()} {...nativeProps}>
+    <ul className={classes} {...allOtherProps}>
       {children}
     </ul>
   );
@@ -21,5 +23,10 @@ export function UnorderedList({
 type ListItemProps = React.DetailedHTMLProps<React.LiHTMLAttributes<HTMLLIElement>, HTMLLIElement>;
 
 export function ListItem({ children, ...nativeProps }: React.PropsWithChildren<ListItemProps>): React.ReactElement {
-  return <li className={`ListItem ${nativeProps?.className ?? ''}`.trim()}>{children}</li>;
+  const { className, ...allOtherProps } = nativeProps;
+  return (
+    <li className={`ListItem ${className}`.trim()} {...allOtherProps}>
+      {children}
+    </li>
+  );
 }

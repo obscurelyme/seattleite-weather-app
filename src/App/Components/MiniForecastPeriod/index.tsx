@@ -2,9 +2,11 @@ import React, { useState } from 'react';
 
 import './styles.scss';
 
+import Button from '../Button';
 import { ListItem, UnorderedList } from '../List';
 import Temperature from '../Temperature';
 import { Period, TemperatureUnit } from '../Utils/forecast';
+import { ChevronLeft, ChevronRight } from '../Icons';
 
 function useForecastPeriods(): Period[] {
   const createForecastPeriods: () => Period[] = () => {
@@ -28,7 +30,6 @@ function useForecastPeriods(): Period[] {
     for (let i = 0; i < 7; i++) {
       forecasts.push({ ...primaryForecast });
     }
-    console.log('Rendered');
     return forecasts;
   };
 
@@ -37,17 +38,55 @@ function useForecastPeriods(): Period[] {
   return state;
 }
 
-export function MiniForecast(): React.ReactElement {
-  const forecasts = useForecastPeriods();
+interface MiniForecastProps {
+  forecasts?: Period[];
+}
 
+export function MiniForecast({ forecasts }: MiniForecastProps): React.ReactElement {
+  const maxLeft = 0;
+  const minLeft = -248;
+  const thresholds = 124; // same size as each period div
+  const [marginLeft, setMarginLeft] = useState(0);
+
+  function handleRightClick(): void {
+    if (marginLeft - thresholds >= minLeft) {
+      setMarginLeft(marginLeft - thresholds);
+    }
+  }
+
+  function handleLeftClick(): void {
+    if (marginLeft + thresholds <= maxLeft) {
+      setMarginLeft(marginLeft + thresholds);
+    }
+  }
+
+  // TODO: Create a better parser to combine the day/night cycles into a single Forecast Period
   return (
-    <UnorderedList horizontal>
-      {forecasts.map((forecast, i) => (
-        <ListItem key={i}>
-          <MiniForecastPeriod {...forecast} />
-        </ListItem>
-      ))}
-    </UnorderedList>
+    <div style={{ display: 'flex', height: '181px' }}>
+      <Button disabled={marginLeft === maxLeft} onClick={handleLeftClick} className="MiniForecastPeriod-ListButton">
+        <ChevronLeft />
+      </Button>
+      <div className="MiniForecastPeriod-ListContainer">
+        <UnorderedList
+          horizontal
+          className="MiniForecastPeriod-List"
+          style={{
+            marginLeft,
+          }}
+        >
+          {forecasts?.map((forecast, i) =>
+            i < 7 ? (
+              <ListItem key={i}>
+                <MiniForecastPeriod {...forecast} />
+              </ListItem>
+            ) : null
+          )}
+        </UnorderedList>
+      </div>
+      <Button disabled={marginLeft === minLeft} onClick={handleRightClick} className="MiniForecastPeriod-ListButton">
+        <ChevronRight />
+      </Button>
+    </div>
   );
 }
 
@@ -62,10 +101,9 @@ export default function MiniForecastPeriod(props: Period): React.ReactElement {
           title={props.shortForecast}
         />
       </div>
-      <h4>
-        {props.name} - <Temperature temperature={props.temperature} temperatureUnit={props.temperatureUnit} />
-      </h4>
-      <span>{props.shortForecast}</span>
+      <h5 style={{ margin: '0.1rem', textAlign: 'center' }}>{props.name}</h5>
+      <Temperature temperature={props.temperature} temperatureUnit={props.temperatureUnit} />
+      <span style={{ textAlign: 'center' }}>{props.shortForecast}</span>
     </div>
   );
 }

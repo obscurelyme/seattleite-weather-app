@@ -10,11 +10,30 @@
       -webkit-clip-path: polygon(0 0, 0% 100%, 100% 0);
       z-index: 101;
     }
+
     img {
       position: absolute;
     }
+
     position: relative;
     height: 86px;
     width: 86px;
+    border: 1px solid #fff;
   }
+}
+
+.MiniForecastPeriod-List {
+  display: flex;
+  flex-wrap: nowrap;
+  transition: margin-right, margin-left 0.33s linear;
+}
+
+.MiniForecastPeriod-ListContainer {
+  width: 620px;
+  overflow: hidden;
+}
+
+.MiniForecastPeriod-ListButton {
+  height: 100% !important;
+  width: 50px !important;
 }

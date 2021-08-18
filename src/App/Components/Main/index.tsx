@@ -45,10 +45,10 @@ export default function Main(): React.ReactElement {
         <Button aria-label="Fetch Weather Report" onClick={handleClick} loading={loading} disabled={loading}>
           Fetch my weather report
         </Button>
-        <MiniForecast />
+        {forecast && <MiniForecast forecasts={forecast.periods} />}
       </div>
 
-      {forecast && (
+      {/* {forecast && (
         <div>
           <RelativeLocation {...point} />
           <h6>Updated: {new Date(forecast.generatedAt).toLocaleTimeString()}</h6>
@@ -62,7 +62,7 @@ export default function Main(): React.ReactElement {
             })}
           </UnorderedList>
         </div>
-      )}
+      )} */}
 
       {error && (
         <div id="WebserviceErrors" className="error">
